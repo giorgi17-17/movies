@@ -1,0 +1,86 @@
+/* moviesCard.module.css */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Change to flex-start to align movies from left to right */
+  overflow-x: auto; /* Allow horizontal scrolling if there are more than 7 movies */
+  align-items: center;
+}
+
+.movieCard {
+  /* border: 1px solid #ddd; */
+  overflow: hidden;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.2s;
+  width: 12rem;
+  /* width: calc(10% + 20px);  */
+  /* 100% / 7 movies per row - gap */
+  /* background-color: #fff; */
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.movieCardLink {
+  /* border: 1px solid #ddd; */
+  overflow: hidden;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.2s;
+  width: 12rem;
+  /* width: calc(10% + 20px);  */
+  /* 100% / 7 movies per row - gap */
+  /* background-color: #fff; */
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+/* .movieCard:hover {
+  transform: scale(1.05);
+} */
+
+.imageContainer {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.movieImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.movieInfo {
+  padding: 12px;
+  /* text-align: center; */
+}
+
+.movieName {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.movieScore {
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: dashed;
+}
+.num {
+  color: rgb(238, 255, 0);
+  font-size: 20px;
+}
+
+/* a.linkStyle {
+  text-decoration: none; 
+  color: inherit; /
+} */
