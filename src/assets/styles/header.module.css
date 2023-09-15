@@ -1,32 +1,44 @@
-.header, .navbar{
-    width: 100%;
-    /* height: 70px; */
-    background-color: black;
+.header {
+  width: 100%;
+  /* height: 70px; */
+  position: fixed;
+  z-index: 1000;
+  background: rgba(124, 124, 124, 0.55);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  /* backdrop-filter: blur(9.2px); */
+  /* -webkit-backdrop-filter: blur(9.2px); */
 }
 
+.scrolledHeader {
+    background: rgb(255, 255, 255);
+  }
+
 .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;  
-      flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .navbarNav {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    padding: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 10px;
+  flex-wrap: wrap;
 }
 .navlink {
-    text-decoration: none;
-    color: rgb(250, 250, 250);
-    list-style: none;
-    font-size: 20px;
+  text-decoration: none;
+  color: rgb(250, 250, 250);
+  list-style: none;
+  font-size: 20px;
 }
 .link {
     text-decoration: none;
-    color: white;
-    font-size: 40px;
-
+  color: white;
+  font-size: 40px;
 }
+
+    .scrollNavLink {
+        color: black;
+    }

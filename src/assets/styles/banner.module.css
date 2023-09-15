@@ -1,8 +1,97 @@
+/* banner.module.css */
+
 .cont {
-    width: 100%;
-    height: 500px;
-    background-color: rgb(7, 36, 26);
+  width: 100%;
+  /* height: 10rem; */
+  height: 500px;
 }
-.swiper {
-    height: 500px;
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
 }
+.image {
+  position: relative; 
+  width: 100%;
+  height: 500px;
+}
+
+.nothing {
+  position: absolute;
+  width: 100%;
+  box-shadow: 1px 0px 237px  31px rgba(0,0,0,1) inset;
+  height: 100%;
+}
+.title {
+  font-size: 60px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 50px;
+  left: 150px;
+  color: white;
+}
+.carouselImage{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  /* box-shadow: 1px 0px 76px 23px rgba(0,0,0,1) ; */
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+} 
+
+
+
+
+
+
+.carouselButton:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prevButton {
+  left: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 500;
+}
+
+.nextButton {
+  right: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .cont {
+    height: 300px; /* Adjust the height for smaller screens */
+  }
+  .image {
+    height: 300px; /* Adjust the height for smaller screens */
+  }
+  .carouselImage {
+    height: 300px; /* Adjust the height for smaller screens */
+  }
+
+  .title {
+    font-size: 30px; /* Adjust the font size for smaller screens */
+    bottom: 20px; /* Adjust the position for smaller screens */
+    left: 20px; /* Adjust the position for smaller screens */
+  }
+  .nothing {
+    height: 300px; /* Adjust the height for smaller screens */
+
+  }
+}
+

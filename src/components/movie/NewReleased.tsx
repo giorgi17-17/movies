@@ -1,20 +1,19 @@
-import { getTrendingMovies, getTrendingTvShows } from "../../services/fetch";
-import styles from "../../assets/styles/trending.module.css";
+import { getNewReleased } from "../../services/fetch";
+import styles from "../../assets/styles/newReleased.module.css";
 import { useState, useEffect } from "react";
 import MoviesCard from "./MoviesCard";
-
-const Trending = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const [trendingTvShows, setTrendingTvShows] = useState([]);
+const NewReleased = () => {
+  const [newTvShow, setTvShow] = useState([]);
+  const [newMovies, setNewMovies] = useState([]);
   const [movies, setMovies] = useState(false);
-  const [tvShows, setTvShows] = useState(false);
+//   const [tvShows, setTvShows] = useState(false);
 
   async function fetchMovies() {
     try {
-      const trendingMovies = await getTrendingMovies("week");
-      setTrendingMovies(trendingMovies);
+      const trendingMovies = await getNewReleased("movie");
+      setNewMovies(trendingMovies);
       setMovies(true);
-      setTvShows(false);
+      //   setTvShows(false);
     } catch (error) {
       return error;
     }
@@ -22,10 +21,10 @@ const Trending = () => {
 
   async function fetchTvShows() {
     try {
-      const trendingTvShows = await getTrendingTvShows("week");
-      setTrendingTvShows(trendingTvShows);
+      const trendingTvShows = await getNewReleased("tv");
+      setTvShow(trendingTvShows);
       setMovies(false);
-      setTvShows(true);
+    //   setTvShows(true);
     } catch (error) {
       return error;
     }
@@ -37,12 +36,11 @@ const Trending = () => {
       fetchMovies();
     };
   }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.trend}>
-        <div className={styles.trending}>Trending</div>
-        <div className={styles.trendingBtn}>
+        <div className={styles.newReleases}>New Releases</div>
+        <div className={styles.newReleasesBtn}>
           <button className={styles.movies} onClick={fetchMovies}>
             Movies
           </button>
@@ -52,18 +50,18 @@ const Trending = () => {
         </div>
       </div>
 
-      {movies && (
+      {movies ? (
         <div className={styles.moviesCards}>
-          <MoviesCard trendingMovies={trendingMovies} />
+          <MoviesCard trendingMovies={newMovies} />
+        </div>
+      ) : (
+        <div className={styles.moviesCards}>
+          <MoviesCard trendingMovies={newTvShow} />
         </div>
       )}
-      {tvShows && (
-        <div className={styles.moviesCards}>
-          <MoviesCard trendingMovies={trendingTvShows} />
-        </div>
-      )}
+     
     </div>
   );
 };
 
-export default Trending;
+export default NewReleased;

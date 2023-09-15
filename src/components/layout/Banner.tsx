@@ -1,85 +1,78 @@
+import  { useState, useEffect } from "react";
 import styles from "../../assets/styles/banner.module.css";
-// import photo from "../../assets/images/dressup.jpg";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/scrollbar";
+
+const movies = [
+  {
+    name: "Strays",
+    image:
+      "https://static.adjaranet.com/movies/covers/1920/850/878619850-c8b4b1b1a8f7eaf9ded76d5827c23434.jpg",
+  },
+  {
+    name: "The Pod Generation",
+    image:
+      "https://static.adjaranet.com/movies/covers/1920/488/878619488-0f34df7fd8c27b2fc107e951fcbcec90.jpg",
+  },
+  {
+    name: "Who Is Erin Carter?",
+    image:
+      "https://static.adjaranet.com/movies/covers/1920/99/878619099-9eae0854945533050d0ac4a9960d8e1a.jpg",
+  },
+];
+
 const Banner = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const goToPreviousImage = () => {
+    setTimeout(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? movies.length - 1 : prevIndex - 1
+      );
+    }, 500); // Delay to allow for fade out animation
+  };
+
+  const goToNextImage = () => {
+    setTimeout(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === movies.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 500); // Delay to allow for fade out animation
+  };
+
+  useEffect(() => {
+    const interval = setInterval(goToNextImage, 8000); // Auto movement every 8 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentMovie = movies[currentImageIndex];
+
   return (
     <div className={styles.cont}>
-
-
-      {/* <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        className={styles.swiper}
-      >
-        <SwiperSlide>
-          <img src={photo} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper> */}
-
-    
+      <div className={styles.carousel}>
+        <button
+          className={`${styles.carouselButton} ${styles.prevButton}`}
+          onClick={goToPreviousImage}
+        >
+          &lt;
+        </button>
+        <div className={styles.image}>
+        
+            <div className={styles.nothing}></div>
+            <img
+              src={currentMovie.image}
+              alt={`Image ${currentImageIndex + 1}`}
+              className={styles.carouselImage}
+            />
+            <p className={styles.title}>{currentMovie.name}</p>
+        </div>
+        <button
+          className={`${styles.carouselButton} ${styles.nextButton}`}
+          onClick={goToNextImage}
+        >
+          &gt;
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Banner;
-
-// <div className={styles.splideContainer}>
-//             <Splide
-//               options={{
-//                 // type: "loop",
-//                 gap: "1rem",
-//                 autoplay: false,
-//                 pagination: true,
-//                 arrows: true,
-//                 perPage: getSlidesPerView(),
-//                 breakpoints: {
-//                   600: {
-//                     perPage: 2,
-//                   },
-//                   1024: {
-//                     perPage: 3,
-//                   },
-//                   1280: {
-//                     perPage: 5,
-//                   },
-//                 },
-//                 classes: {
-//                   arrow: `splide__arrow ${styles.yourClassArrow}`,
-//                   prev: `splide__arrow--prev ${styles.yourClassPrev}`,
-//                   next: `splide__arrow--next ${styles.yourClassNext}`,
-//                 },
-//               }}
-//             >
-//               {products
-//                 .slice(0, 20)
-//                 .filter((item) => item.variants && item.variants.find(variant => variant.quantity > 0))
-//                 .map((item) => (
-//                   <SplideSlide key={item.id}>
-//                     <div className={styles.prod}>
-//                       <Product
-//                         title={item.category.brand}
-//                         name={item.name}
-//                         img={item.image}
-//                         price={item.price}
-//                         id={item.id}
-//                         storeLocation={item.location}
-//                         size={item.category.size}
-//                         alt={`${item.name} image`}
-//                       />
-//                     </div>
-//                   </SplideSlide>
-//                 ))}
-//             </Splide>
-//           </div>

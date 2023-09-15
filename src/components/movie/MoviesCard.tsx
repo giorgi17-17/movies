@@ -19,7 +19,7 @@ type trendingProps = {
 const basePosterUrl = "https://image.tmdb.org/t/p/w185/";
 
 const MoviesCard = ({ trendingMovies }: trendingProps) => {
-  console.log(trendingMovies);
+  // console.log(trendingMovies);
   return (
     <div className={styles.container}>
       {trendingMovies.slice(0, 14).map((movie) => (

@@ -1,4 +1,5 @@
 import Banner from "../components/layout/Banner"
+import NewReleased from "../components/movie/NewReleased"
 import Trending from "../components/movie/Trending"
 
 const Home = () => {
@@ -6,7 +7,7 @@ const Home = () => {
     <div>
         <Banner />
         <Trending />
-        {/* <div></div> */}
+        <NewReleased />
     </div>
   )
 }
